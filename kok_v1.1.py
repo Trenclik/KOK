@@ -16,8 +16,7 @@ def get_files_in_folder(folder_path):   #zapíše do listu soubory
     return files_list
 
 # Cesta ke složce, ze které chcete načíst soubory
-folder_path = "Jozi fotky/"
-
+folder_path = "upraveny_josi/"             
 # Získání souborů ze složky a uložení do listu
 files_list = get_files_in_folder(folder_path)
 
