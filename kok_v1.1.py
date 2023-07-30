@@ -3,7 +3,7 @@ import random
 import os
 
 okno = Tk() #vytvoří kokno ig
-okno.geometry("1360x768")
+okno.attributes('-fullscreen',True)
 okno.title("kok mole nečum")
 
 
@@ -54,8 +54,12 @@ klikblb = Button(okno,
                  command=klik)
 klikblb.pack()
 
-
-
+klikblb = Button(okno,
+                 text="exit",
+                 command=exit)
+klikblb.pack()
+def exit(event):
+    okno.quit()
 
 slovo = "kok"
 label = Label(okno, 
