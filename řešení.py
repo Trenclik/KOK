@@ -2,18 +2,17 @@ from PIL import Image, ImageOps
 import os
 
 def resize_to_fit_bezel(image):
-    # Resize the image to fit inside the 720x720 bezel while maintaining its aspect ratio
-    bezel_size = 800
+    bezel_size = 800 #velikost rámečku
     max_dimension = max(image.width, image.height)
 
     if max_dimension >= bezel_size:
-        # If the image is larger than the bezel, scale it down
+        # zmenšení
         ratio = bezel_size / max_dimension
         new_width = int(image.width * ratio)
         new_height = int(image.height * ratio)
         return image.resize((new_width, new_height), Image.LANCZOS)
     else:
-        # If the image is smaller than the bezel, scale it up and add white padding
+        # zvětšení
         ratio = bezel_size / max_dimension
         new_width = int(image.width * ratio)
         new_height = int(image.height * ratio)
