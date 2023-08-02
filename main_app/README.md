@@ -1,3 +1,0 @@
-# KOK
-totální kokotina
-XD
