@@ -5,6 +5,9 @@ import subprocess
 import sys
 import shutil
 
+script_directory = os.path.dirname(os.path.abspath(__file__))
+os.chdir(script_directory)
+
 APP_VERSION = "v1.5.0"  # Replace this with your app's current version
 GITHUB_REPO_URL = "https://api.github.com/repos/Trenclik/KOK/releases"
 HEADERS = {
@@ -58,7 +61,8 @@ def update_app(latest_version):
         
         print("Update successful. Restarting the app...")
         # Restart the app using the new version
-
+        python = sys.executable
+        subprocess.call([python, "submain_app.py"])
 
     except Exception as e:
         print(f"Update failed: {e}")
