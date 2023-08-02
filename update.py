@@ -5,7 +5,7 @@ import subprocess
 import sys
 import shutil
 
-APP_VERSION = "v1.4.0"  # Replace this with your app's current version
+APP_VERSION = "v1.5.0"  # Replace this with your app's current version
 GITHUB_REPO_URL = "https://api.github.com/repos/Trenclik/KOK/releases"
 HEADERS = {
     "Authorization": "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" #NEMAZAT!!!!!! JE TO API KLÍČ!!!!!!
@@ -71,9 +71,10 @@ if __name__ == "__main__":
     if latest_version and latest_version != APP_VERSION:
         update_app(latest_version)
     else:
-        print("No updates available. Running the app...")
-        python = sys.executable
-        subprocess.call([python, "submain_app.py"])
+        for i in range(1):
+            print("No updates available. Running the app...")
+            python = sys.executable
+            subprocess.call([python, "submain_app.py"])
 
 response = requests.get(GITHUB_REPO_URL, headers=HEADERS)
 print(response.json())
