@@ -3,8 +3,9 @@ import zipfile
 import os
 import subprocess
 import sys
+import shutil
 
-APP_VERSION = "v1.2.0"  # Replace this with your app's current version
+APP_VERSION = "v1.3.0"  # Replace this with your app's current version
 GITHUB_REPO_URL = "https://api.github.com/repos/Trenclik/KOK/releases"
 HEADERS = {
     "Authorization": "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" #NEMAZAT!!!!!! JE TO API KLÍČ!!!!!!
@@ -38,17 +39,27 @@ def update_app(latest_version):
         with open("update.zip", "wb") as f:
             f.write(response.content)
         
-        # Extract the zip file
+        # Extract the zip file in a temporary directory
         with zipfile.ZipFile("update.zip", "r") as zip_ref:
-            zip_ref.extractall(".")
+            zip_ref.extractall("temp_dir")
         
         # Clean up the downloaded zip file
         os.remove("update.zip")
         
+        # Copy the updated files to the root directory
+        for root, dirs, files in os.walk("temp_dir"):
+            for file in files:
+                source_path = os.path.join(root, file)
+                destination_path = os.path.join(".", file)
+                shutil.copy2(source_path, destination_path)
+        
+        # Remove the temporary directory
+        shutil.rmtree("temp_dir")
+        
         print("Update successful. Restarting the app...")
         # Restart the app using the new version
         python = sys.executable
-        subprocess.call([python, "main_app.py"])
+        subprocess.call([python, "main.py"])
         sys.exit(0)
     except Exception as e:
         print(f"Update failed: {e}")
