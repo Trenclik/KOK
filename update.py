@@ -72,11 +72,9 @@ if __name__ == "__main__":
         update_app(latest_version)
     else:
         print("No updates available. Running the app...")
-        # Your app's main code goes here
+        python = sys.executable
+        subprocess.call([python, "submain_app.py"])
 
 response = requests.get(GITHUB_REPO_URL, headers=HEADERS)
 print(response.json())
 print(response.status_code)  # Check the HTTP status code
-
-python = sys.executable
-subprocess.call([python, "submain_app.py"])
