@@ -58,9 +58,8 @@ def update_app(latest_version):
         
         print("Update successful. Restarting the app...")
         # Restart the app using the new version
-        python = sys.executable
-        subprocess.call([python, "main.py"])
-        sys.exit(0)
+
+
     except Exception as e:
         print(f"Update failed: {e}")
 
@@ -78,3 +77,6 @@ if __name__ == "__main__":
 response = requests.get(GITHUB_REPO_URL, headers=HEADERS)
 print(response.json())
 print(response.status_code)  # Check the HTTP status code
+
+python = sys.executable
+subprocess.call([python, "submain_app.py"])
