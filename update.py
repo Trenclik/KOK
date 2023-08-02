@@ -8,7 +8,7 @@ import shutil
 script_directory = os.path.dirname(os.path.abspath(__file__))
 os.chdir(script_directory)
 
-APP_VERSION = "v1.6.0"  # Replace this with your app's current version
+APP_VERSION = "v1.7.0"  # Replace this with your app's current version
 GITHUB_REPO_URL = "https://api.github.com/repos/Trenclik/KOK/releases"
 HEADERS = {
     "Authorization": "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" #NEMAZAT!!!!!! JE TO API KLÍČ!!!!!!
@@ -50,10 +50,12 @@ def update_app(latest_version):
         os.remove("update.zip")
         
         # Copy the updated files to the root directory
-        for root, dirs, files in os.walk("temp_dir"):
+        source_dir = os.path.join("temp_dir", f"KOK-{latest_version}")
+        for root, dirs, files in os.walk(source_dir):
             for file in files:
                 source_path = os.path.join(root, file)
-                destination_path = os.path.join(".", file)
+                relative_path = os.path.relpath(source_path, source_dir)
+                destination_path = os.path.join(".", relative_path)
                 shutil.copy2(source_path, destination_path)
         
         # Remove the temporary directory
