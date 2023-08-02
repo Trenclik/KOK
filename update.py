@@ -6,10 +6,13 @@ import sys
 
 APP_VERSION = "1.0.0"  # Replace this with your app's current version
 GITHUB_REPO_URL = "https://api.github.com/repos/Trenclik/KOK/releases/latest"
+HEADERS = {
+    "Authorization": "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" #NEMAZAT!!!!!! JE TO API KLÍČ!!!!!!
+}
 
 def check_for_updates():
     try:
-        response = requests.get(GITHUB_REPO_URL)
+        response = requests.get(GITHUB_REPO_URL, headers=HEADERS)
         response.raise_for_status()
         release_data = response.json()
         latest_version = release_data["tag_name"]
