@@ -4,23 +4,7 @@ import os
 import subprocess
 import sys
 
-
-
-
-
-
-# btw tohle zatim nefachá
-
-
-
-
-
-
-
-
-
-
-APP_VERSION = "1.0"  # Replace this with your app's current version
+APP_VERSION = "1.0.0"  # Replace this with your app's current version
 GITHUB_REPO_URL = "https://api.github.com/repos/Trenclik/KOK/releases/latest"
 
 def check_for_updates():
@@ -28,7 +12,7 @@ def check_for_updates():
         response = requests.get(GITHUB_REPO_URL)
         response.raise_for_status()
         release_data = response.json()
-        latest_version = release_data["kok"]
+        latest_version = release_data["tag_name"]
         return latest_version
     except (requests.exceptions.RequestException, KeyError):
         pass
@@ -36,7 +20,6 @@ def check_for_updates():
 
 def update_app(latest_version):
     try:
-        # Replace this URL with the direct download link to the zip file of the latest release
         download_url = f"https://github.com/Trenclik/KOK/archive/{latest_version}.zip"
         response = requests.get(download_url)
         response.raise_for_status()
