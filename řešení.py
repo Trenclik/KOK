@@ -2,7 +2,7 @@ from PIL import Image, ImageOps
 import os
 import tkinter as tk
 root = tk.Tk()
-velikos = root.winfo_screenheight() /6 * 5
+velikos = float(root.winfo_screenheight() /6)* 5
 velikost =  round(velikos)
 def resize_to_fit_bezel(image):
     bezel_size = velikost #velikost rámečku
@@ -32,8 +32,8 @@ def convert_to_png(image_path, output_folder):
     # Resize the image to fit inside the 720x720 bezel (if necessary)
     bezel_image = resize_to_fit_bezel(image)
 
-    # Create a new 720x720 white background image
-    bezel_size = 720
+    # Create a new 720x720 black background image
+    bezel_size = velikost
     new_image = Image.new('RGB', (bezel_size, bezel_size), (0,0,0))
 
     # Calculate the position to center the resized image within the bezel
