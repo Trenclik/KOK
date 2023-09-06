@@ -8,7 +8,7 @@ import shutil
 script_directory = os.path.dirname(os.path.abspath(__file__))
 os.chdir(script_directory)
 
-APP_VERSION = "v1.10.0"  # Replace this with your app's current version
+APP_VERSION = "v1.11.0"  # Replace this with your app's current version
 GITHUB_REPO_URL = "https://api.github.com/repos/Trenclik/KOK/releases"
 HEADERS = {
     "Authorization": "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" #NEMAZAT!!!!!! JE TO API KLÍČ!!!!!!
@@ -72,8 +72,8 @@ def update_app(latest_version):
 if __name__ == "__main__":
     latest_version = check_for_updates()
     print("Latest version from GitHub:", latest_version, "\nCurrent app version:", APP_VERSION)
-    latest_version = check_for_updates()
-    if latest_version and latest_version != APP_VERSION:
+
+    if latest_version  != APP_VERSION:
         update_app(latest_version)
     else:
         for i in range(1):

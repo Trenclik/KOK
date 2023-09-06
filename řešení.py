@@ -1,8 +1,11 @@
 from PIL import Image, ImageOps
 import os
-
+import tkinter as tk
+root = tk.Tk()
+velikos = root.winfo_screenheight() /6 * 5
+velikost =  round(velikos)
 def resize_to_fit_bezel(image):
-    bezel_size = 800 #velikost rámečku
+    bezel_size = velikost #velikost rámečku
     max_dimension = max(image.width, image.height)
 
     if max_dimension >= bezel_size:
