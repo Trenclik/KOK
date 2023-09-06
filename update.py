@@ -8,7 +8,7 @@ import shutil
 script_directory = os.path.dirname(os.path.abspath(__file__))
 os.chdir(script_directory)
 
-APP_VERSION = "v1.1.0"  # Replace this with your app's current version
+APP_VERSION = "v1.11.0"  # Replace this with your app's current version
 GITHUB_REPO_URL = "https://api.github.com/repos/Trenclik/KOK/releases"
 HEADERS = {
     "Authorization": "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" #NEMAZAT!!!!!! JE TO API KLÍČ!!!!!!
@@ -112,4 +112,3 @@ if __name__ == "__main__":
 response = requests.get(GITHUB_REPO_URL, headers=HEADERS)
 #print(response.json())
 print(response.status_code)  # Check the HTTP status code
-input()
