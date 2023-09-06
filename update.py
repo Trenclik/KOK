@@ -71,8 +71,7 @@ def update_app(latest_version):
 
 if __name__ == "__main__":
     latest_version = check_for_updates()
-    print("Latest version from GitHub:", latest_version)
-    print("Current app version:", APP_VERSION)
+    print("Latest version from GitHub:", latest_version, "\nCurrent app version:", APP_VERSION)
     latest_version = check_for_updates()
     if latest_version and latest_version != APP_VERSION:
         update_app(latest_version)
