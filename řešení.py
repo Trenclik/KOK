@@ -26,21 +26,21 @@ def resize_to_fit_bezel(image):
         return padded_image
 
 def convert_to_png(image_path, output_folder):
-    # Open the image and convert it to RGBA to support transparency
+    #konvertuje do rgba
     image = Image.open(image_path).convert('RGBA')
 
-    # Resize the image to fit inside the 720x720 bezel (if necessary)
+    #změní velikost rámečku
     bezel_image = resize_to_fit_bezel(image)
 
-    # Create a new 720x720 black background image
+    #vytvoří rámeček
     bezel_size = velikost
     new_image = Image.new('RGB', (bezel_size, bezel_size), (0,0,0))
 
-    # Calculate the position to center the resized image within the bezel
+    #vypočítá střed rámečku
     x_offset = (bezel_size - bezel_image.width) // 2
     y_offset = (bezel_size - bezel_image.height) // 2
 
-    # Paste the resized image onto the bezel
+    #vloží předimenzovaný obrázek
     new_image.paste(bezel_image, (x_offset, y_offset))
 
     # Save the bezel image as PNG in the output folder
