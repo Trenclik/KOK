@@ -67,7 +67,7 @@ def update_app(latest_version):
             temp_file_path = os.path.join(temp_folder, temp_file)
             root_file_path = os.path.join(root_folder, temp_file)
 
-            # zkontroluje jestli existuje složka a pokud ano tak jí odstraní (celkem debilní)
+            # zkontroluje jestli existuje složka a pokud ano tak jí odstraní
             if os.path.exists(root_file_path):
                 os.remove(root_file_path)
 
