@@ -38,7 +38,7 @@ def update_app(latest_version):
         response = requests.get(download_url)
         response.raise_for_status()
         
-        # Save the downloaded zip file
+        # Stáhne aktualizaci z githubu
         with open("update.zip", "wb") as f:
             f.write(response.content)
         
@@ -50,36 +50,34 @@ def update_app(latest_version):
         shutil.unpack_archive(zdroj, destinace)
         print("temp 2")
 
-        # Clean up the downloaded zip file
+        # odstraní zip
         os.remove("update.zip")
         print("delete zip")
         
-        # Copy the updated files to the root directory
+        # zkopíruje z tempu do root složky
 
-        # Define the root and temporary folder paths
         root_folder = "."
         temp_folder = "temp"
 
-        # List files in the temporary folder
+        # dá všechny soubory složky do listu
         temp_files = os.listdir(temp_folder)
 
-        # Iterate through the temporary files
+        # nevim nějaká pičovina co si vymyslelo gpt
         for temp_file in temp_files:
             temp_file_path = os.path.join(temp_folder, temp_file)
             root_file_path = os.path.join(root_folder, temp_file)
 
-            # Check if the file exists in the root folder
+            # zkontroluje jestli existuje složka a pokud ano tak jí odstraní (celkem debilní)
             if os.path.exists(root_file_path):
-                # Remove the existing file in the root folder
                 os.remove(root_file_path)
 
-            # Copy the file from the temporary folder to the root folder
+            # zkopíruje z tempu do root složky
             shutil.copy2(temp_file_path, root_folder)
             print(f"Replaced {temp_file} in the root folder.")
 
         print("All files replaced successfully.")
         
-        # Remove the temporary directory
+        # odstraní temp_dir
         shutil.rmtree("temp_dir")
         print("delete temp 1")
 
@@ -87,7 +85,7 @@ def update_app(latest_version):
         print("delete temp 2")
 
         print("Update successful. Restarting the app...")
-        # Restart the app using the new version
+        # restartuje v nový verzi
         python = sys.executable
         subprocess.call([python, "submain_app.py"])
 
@@ -107,5 +105,4 @@ if __name__ == "__main__":
             subprocess.call([python, "submain_app.py"])
 
 response = requests.get(GITHUB_REPO_URL, headers=HEADERS)
-#print(response.json())
-print("HTTPS status code",response.status_code)  # Check the HTTP status code
+print("HTTPS status code",response.status_code)  # HTTP status code
