@@ -42,15 +42,12 @@ def update_app(latest_version):
         with open("update.zip", "wb") as f:
             f.write(response.content)
         
-        # Extract the zip file in a temporary directory
-        with zipfile.ZipFile("update.zip", "r") as zip_ref:
-            zip_ref.extractall("temp_dir")
-            print("extrakt do temp") #                             složka se vytvoří pouze ke čtení, tu snad skapu nad tim
+#                             složka se vytvoří pouze ke čtení, tu snad skapu nad tim
 
-        os.mkdir("temp", mode=0o700)
-        zdroj = "temp_dir"
+        os.mkdir("temp", mode=0o700)    #hotfix
+        zdroj = "update.zip"
         destinace = "temp"
-        shutil.copy(zdroj, destinace)
+        shutil.unpack_archive(zdroj, destinace)
         print("temp 2")
 
         # Clean up the downloaded zip file
