@@ -108,4 +108,4 @@ if __name__ == "__main__":
 
 response = requests.get(GITHUB_REPO_URL, headers=HEADERS)
 #print(response.json())
-print(response.status_code)  # Check the HTTP status code
+print("HTTPS status code",response.status_code)  # Check the HTTP status code
