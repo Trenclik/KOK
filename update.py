@@ -5,13 +5,10 @@ import sys
 import shutil
 import re
 
-
-
-
 script_directory = os.path.dirname(os.path.abspath(__file__))
 os.chdir(script_directory)
 
-APP_VERSION = "v1.12.0"  # Replace this with your app's current version
+APP_VERSION = "v1.12.1"  # Replace this with your app's current version
 GITHUB_REPO_URL = "https://api.github.com/repos/Trenclik/KOK/releases"
 HEADERS = {
     "Authorization": "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" #NEMAZAT!!!!!! JE TO API KLÍČ!!!!!!
@@ -28,9 +25,6 @@ verze = [latest_version]
 res = [re.sub(r'^.', '', s) for s in verze]
 verzebez_v = str(res[0])
 
-
-
-
 def check_for_updates():
     try:
         response = requests.get(GITHUB_REPO_URL, headers=HEADERS)
@@ -42,7 +36,6 @@ def check_for_updates():
             latest_version = latest_release["tag_name"]
             return latest_version
         
-
     except requests.exceptions.RequestException as e:
         print("Error occurred during API request:", e)
     except KeyError as e:
@@ -64,7 +57,6 @@ def update_app(latest_version):
         shutil.unpack_archive("update.zip")
 
         os.rename(f"kok-{verzebez_v}","temp")
-
 
         # Define the root folder and the subfolder name
         root_folder = '.'  # You can change this to the path of your root folder
@@ -89,9 +81,9 @@ def update_app(latest_version):
 
             print(f'Replaced: {subfolder_file}')
 
+        os.remove("temp")
+        os.remove("update.zip")
         print('File replacement completed.')
-
-
 
         #                                                restartuje v nový verzi
         python = sys.executable
@@ -114,4 +106,3 @@ if __name__ == "__main__":
 
 response = requests.get(GITHUB_REPO_URL, headers=HEADERS)
 print("HTTPS status code:",response.status_code)  # HTTP status code
-input()
