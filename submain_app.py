@@ -10,7 +10,5 @@ def execute_python_script(script_path):
     except Exception as e:
         print(f"An error occurred: {e}")
 if __name__ == "__main__":
-    script1_path = "řešení.py"
-    script2_path = "kok.py"
-    execute_python_script(script1_path)
-    execute_python_script(script2_path)
+    execute_python_script("řešení.py")
+    execute_python_script("kok.py")
