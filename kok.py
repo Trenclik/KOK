@@ -25,7 +25,7 @@ files_list = get_files_in_folder(folder_path)
 
 
 
-ikonka = PhotoImage(file="Jozi fotky/11.png")
+ikonka = PhotoImage(file="11.png")
 okno.iconphoto(True,ikonka)
 okno.config(background="blue")
 majtin = random.choice(files_list)
