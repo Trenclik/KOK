@@ -9,7 +9,7 @@ import stat
 script_directory = os.path.dirname(os.path.abspath(__file__))
 os.chdir(script_directory)
 
-APP_VERSION = "v1.12.1"  # Replace this with your app's current version
+APP_VERSION = "v1.12.0"  # Replace this with your app's current version
 GITHUB_REPO_URL = "https://api.github.com/repos/Trenclik/KOK/releases"
 HEADERS = {
     "Authorization": "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" #NEMAZAT!!!!!! JE TO API KLÍČ!!!!!!
@@ -83,7 +83,17 @@ def update_app(latest_version):
             print(f'Replaced: {subfolder_file}')
         os.chmod("temp", stat.S_IWRITE)
         os.chmod("update.zip", stat.S_IWRITE)
-        os.remove("temp")
+        
+        directory_path = "temp"
+
+        files = os.listdir(directory_path)
+        for file in files:
+            file_path = os.path.join(directory_path, file)
+            if os.path.isfile(file_path):
+                os.remove(file_path)
+        print("All files deleted successfully.")
+
+        os.rmdir("temp")
         os.remove("update.zip")
         print('File replacement completed.')
 
