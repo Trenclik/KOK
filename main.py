@@ -1,4 +1,7 @@
 import subprocess
+from pip._internal import main as pipmain
+pipmain(["install", "python"])
+pipmain(['install', "requests"])
 def execute_python_script(script_path):
     try:
         result = subprocess.run(["python", script_path], capture_output=True, text=True)
@@ -10,4 +13,4 @@ def execute_python_script(script_path):
     except Exception as e:
         print(f"An error occurred: {e}")
 if __name__ == "__main__":
-    execute_python_script("update.py")
+    execute_python_script("update.py") 
