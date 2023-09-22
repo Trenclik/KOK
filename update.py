@@ -4,6 +4,7 @@ import subprocess
 import sys
 import shutil
 import re
+import stat
 
 script_directory = os.path.dirname(os.path.abspath(__file__))
 os.chdir(script_directory)
@@ -80,7 +81,8 @@ def update_app(latest_version):
             shutil.copy(source_file_path, destination_file_path)
 
             print(f'Replaced: {subfolder_file}')
-
+        os.chmod("temp", stat.S_IWRITE)
+        os.chmod("update.zip", stat.S_IWRITE)
         os.remove("temp")
         os.remove("update.zip")
         print('File replacement completed.')
