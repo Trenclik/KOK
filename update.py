@@ -39,8 +39,10 @@ def check_for_updates():
         
     except requests.exceptions.RequestException as e:
         print("Error occurred during API request:", e)
+        input()
     except KeyError as e:
         print("Error parsing response data:", e)
+        input()
 
     return None
 
@@ -102,6 +104,7 @@ def update_app(latest_version):
 
     except Exception as e:
         print(f"Update failed: {e}")
+        input()
 
 if __name__ == "__main__":
     latest_version = check_for_updates()
