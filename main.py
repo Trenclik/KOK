@@ -1,15 +1,26 @@
 import subprocess
 import os
-from pip._internal import main as pipmain
-pipmain(["install", "python"])
-pipmain(['install', "requests"])
-pipmain(['install', "pillow"])
-script_directory = os.path.dirname(os.path.abspath(__file__))
-os.chdir(script_directory)
+def install_dependencies():
+    dependencies = ["requests", "pillow"]
+
+    for package in dependencies:
+        try:
+            subprocess.run(["pip", "install", package], check=True)
+            print(f"Successfully installed {package}")
+        except subprocess.CalledProcessError as e:
+            print(f"Error installing {package}. Return Code: {e.returncode}")
+            print(f"Error Output: {e.stderr}")
+        except Exception as e:
+            print(f"An error occurred while installing {package}: {e}")
+
 def execute_python_script(script_path):
     try:
+        # Get the full path to update.py
+        script_directory = os.path.dirname(os.path.abspath(__file__))
+        full_update_path = os.path.join(script_directory, script_path)
+
         # Run the script and capture both stdout and stderr
-        result = subprocess.run(["python", script_path], capture_output=True, text=True, check=True)
+        result = subprocess.run(["python", full_update_path], capture_output=True, text=True, check=True)
 
         # Print the stdout of the script
         print(result.stdout)
@@ -20,10 +31,13 @@ def execute_python_script(script_path):
         print(f"Error occurred while executing {script_path}.")
         print(f"Return Code: {e.returncode}")
         print(f"Error Output: {e.stderr}")
+        print("Current working directory:", os.getcwd())
+        print("Full path to update.py:", full_update_path)
         input()
     except Exception as e:
         print(f"An error occurred: {e}")
         input()
 
 if __name__ == "__main__":
+    install_dependencies()
     execute_python_script("update.py")
