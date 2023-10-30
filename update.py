@@ -9,7 +9,7 @@ import stat
 script_directory = os.path.dirname(os.path.abspath(__file__))
 os.chdir(script_directory)
 
-APP_VERSION = "v1.15.4"  # Replace this with your app's current version
+APP_VERSION = "v1.15.5"  # Replace this with your app's current version
 GITHUB_REPO_URL = "https://api.github.com/repos/Trenclik/KOK/releases"
 HEADERS = {
     "Authorization": "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" #NEMAZAT!!!!!! JE TO API KLÍČ!!!!!!
@@ -94,9 +94,8 @@ def update_app(latest_version):
             if os.path.isfile(file_path):
                 os.remove(file_path)
         for filename in os.listdir("."):
-            source = "." + filename
             if filename.lower().endswith(('.jpg', '.jpeg', '.png', '.bmp', '.gif')):
-                shutil.move(".", "jozi_fotky")
+                shutil.move(filename, "jozi_fotky")
                 print("mrdka: ", filename)
         os.rmdir("temp")
         os.remove("update.zip")
