@@ -95,7 +95,7 @@ def update_app(latest_version):
                 os.remove(file_path)
         for filename in os.listdir(directory_path):
             if filename.lower().endswith(('.jpg', '.jpeg', '.png', '.bmp', '.gif')):
-                os.path.join(".", filename)
+                shutil.move(".", "jozi_fotky")
         os.rmdir("temp")
         os.remove("update.zip")
         print('File replacement completed.')
