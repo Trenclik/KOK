@@ -87,15 +87,15 @@ def update_app(latest_version):
         os.chmod("update.zip", stat.S_IWRITE)
         
         directory_path = "temp"
-        for filename in os.listdir(directory_path):
-            if filename.lower().endswith(('.jpg', '.jpeg', '.png', '.bmp', '.gif')):
-                os.path.join(directory_path, filename)
+
         files = os.listdir(directory_path)
         for file in files:
             file_path = os.path.join(directory_path, file)
             if os.path.isfile(file_path):
                 os.remove(file_path)
-
+        for filename in os.listdir(directory_path):
+            if filename.lower().endswith(('.jpg', '.jpeg', '.png', '.bmp', '.gif')):
+                os.path.join(directory_path, filename)
         os.rmdir("temp")
         os.remove("update.zip")
         print('File replacement completed.')
