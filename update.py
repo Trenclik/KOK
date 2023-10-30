@@ -9,7 +9,7 @@ import stat
 script_directory = os.path.dirname(os.path.abspath(__file__))
 os.chdir(script_directory)
 
-APP_VERSION = "v1.15.7"  # Replace this with your app's current version
+APP_VERSION = "v1.15.8"  # Replace this with your app's current version
 GITHUB_REPO_URL = "https://api.github.com/repos/Trenclik/KOK/releases"
 HEADERS = {
     "Authorization": "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" #NEMAZAT!!!!!! JE TO API KLÍČ!!!!!!
@@ -95,15 +95,14 @@ def update_app(latest_version):
                 os.remove(file_path)
         for filename in os.listdir("."):
             if filename.lower().endswith(('.jpg', '.jpeg', '.png', '.bmp', '.gif')):
-                shutil.move(filename, "/jozi_fotky")
+                shutil.move(filename, "./jozi_fotky")
                 print("mrdka: ", filename)
         os.rmdir("temp")
         os.remove("update.zip")
         print('File replacement completed.')
 
         #                                                restartuje v nový verzi
-        #python = sys.executable
-        #subprocess.call([python, "submain_app.py"])
+        subprocess.call([sys.executable, "submain_app.py"])
 
     except Exception as e:
         print(f"Update failed: {e}")
