@@ -1,11 +1,12 @@
 import subprocess
+import sys
 import os
 def install_dependencies():
     dependencies = ["requests", "pillow"]
-
+    os.system(f'{sys.executable} -m pip install --upgrade pip')
     for package in dependencies:
         try:
-            subprocess.run(["pip", "install", package], check=True)
+            subprocess.run(["pip", "install","--upgrade" , package], check=True)
             print(f"Successfully installed {package}")
         except subprocess.CalledProcessError as e:
             print(f"Error installing {package}. Return Code: {e.returncode}")
