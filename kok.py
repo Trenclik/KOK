@@ -1,11 +1,14 @@
-from tkinter import *
+import tkinter as tk
+from tkinter import ttk
+from ttkthemes import ThemedStyle
 import random
 import os
 
-okno = Tk() #vytvoří kokno ig
+okno = tk.Tk() #vytvoří kokno ig
 okno.attributes('-fullscreen',True)
 okno.title("kok mole nečum")
-
+style = ThemedStyle(okno)
+style.set_theme("equilux")
 
 def get_files_in_folder(folder_path):   #zapíše do listu soubory
     files_list = []
@@ -25,11 +28,11 @@ files_list = get_files_in_folder(folder_path)
 
 
 
-ikonka = PhotoImage(file="11.png")
+ikonka = tk.PhotoImage(file="11.png")
 okno.iconphoto(True,ikonka)
-okno.config(background="blue")
+okno.config(background="black")
 majtin = random.choice(files_list)
-fotka = PhotoImage(file=str(majtin))
+fotka = tk.PhotoImage(file=str(majtin))
 pamet = [majtin]
 
 
@@ -44,16 +47,16 @@ def klik():   #po kliknutí se změní fotka
             kok = False
     pamet.clear
     global fotka
-    fotka = PhotoImage(file=str(majtin))
+    fotka = tk.PhotoImage(file=str(majtin))
     pamet[0] = majtin
     label.config(image = fotka)
 
-klikblb = Button(okno,
+klikblb = ttk.Button(okno,
                  text="kok, klikni",
                  command=klik)
 klikblb.pack()
 
-klikblb = Button(okno,
+klikblb = ttk.Button(okno,
                  text="exit",
                  command=exit)
 klikblb.pack()
@@ -61,15 +64,8 @@ def exit(event):
     okno.quit()
 
 slovo = "kok"
-label = Label(okno, 
-              text=slovo, 
-              font=("Arial",40,"bold"), 
-              fg="green", 
-              bg="black",
-              relief="raised",
-              bd=10,
-              padx=10,
-              pady=10,
+label = ttk.Label(okno, 
+              text=slovo,
               image = fotka,
               compound="bottom")
 label.pack()
