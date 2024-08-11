@@ -2,7 +2,7 @@ import subprocess
 import sys
 import os
 def install_dependencies():
-    dependencies = ["requests", "pillow"]
+    dependencies = ["requests", "pillow","ttkthemes"]
     os.system(f'{sys.executable} -m pip install --upgrade pip')
     for package in dependencies:
         try:
