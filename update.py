@@ -11,9 +11,7 @@ os.chdir(script_directory)
 
 APP_VERSION = "v1.15.8"  # Replace this with your app's current version
 GITHUB_REPO_URL = "https://api.github.com/repos/Trenclik/KOK/releases"
-HEADERS = {
-    "Authorization": "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" #NEMAZAT!!!!!! JE TO API KLÍČ!!!!!!
-}
+HEADERS = {}
 
 response = requests.get(GITHUB_REPO_URL, headers=HEADERS)
 response.raise_for_status()

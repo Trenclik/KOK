@@ -2,4 +2,9 @@
 totální kokotina
 XD
 
-ale vážně, tohle je cvičný projekt na backend a github
+ale vážně, tohle je cvičný projekt na backend a git - github
+# todo:
+vytvořit installer
+vytvořit systém pro jednoduchou tvorbu executable souboru
+nastavit rozdělení release verze a zdrojového kódu
+vyřešit licence (nejspíš MIT open source)

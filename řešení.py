@@ -59,6 +59,6 @@ def main(input_folder, output_folder):
             convert_to_png(image_path, output_folder)
 
 if __name__ == "__main__":
-    input_folder = "jozi_fotky"  # Replace with the path to your input folder
+    input_folder = "."  # Replace with the path to your input folder
     output_folder = "upraveny_josi"  # Replace with the path to the output folder
     main(input_folder, output_folder)
