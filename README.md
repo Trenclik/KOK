@@ -16,3 +16,5 @@ vyřešit licence (nejspíš MIT open source)
 přesunout verze do textového souboru mimo script (rozbíjí to každou druhou aktualizaci)
 
 sjednotit aplikaci do jednoho souboru
+
+Přidat detekci OS a support pro linux a macOS
