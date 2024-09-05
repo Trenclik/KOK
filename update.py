@@ -1,11 +1,10 @@
-import requests
 import os
 import subprocess
 import sys
 import shutil
 import re
 import stat
-
+import requests
 script_directory = os.path.dirname(os.path.abspath(__file__))
 os.chdir(script_directory)
 
@@ -115,8 +114,5 @@ if __name__ == "__main__":
     else:
         for i in range(1):
             print("No updates available. Running the app...")
-            python = sys.executable
-            subprocess.call([python, "submain_app.py"])
-
-response = requests.get(GITHUB_REPO_URL, headers=HEADERS)
-print("HTTPS status code:",response.status_code)  # HTTP status code
+            result = subprocess.run([sys.executable, "submain_app.py"], capture_output=True, text=True, check=True)
+            print(result.stdout)

@@ -61,4 +61,12 @@ def main(input_folder, output_folder):
 if __name__ == "__main__":
     input_folder = "."  # Replace with the path to your input folder
     output_folder = "upraveny_josi"  # Replace with the path to the output folder
-    main(input_folder, output_folder)
+    input_size = 0
+    output_size = 0
+    for filename in os.listdir(input_folder):
+        if filename.lower().endswith(('.jpg', '.jpeg', '.png', '.bmp', '.gif')):
+            input_size += 1
+    for filename in os.listdir(output_folder):
+        output_size += 1
+    if input_size != output_size:
+        main(input_folder, output_folder)
