@@ -8,9 +8,6 @@ def execute_python_script(script_path):
         result = subprocess.run(["python", script_path], capture_output=True, text=True, check=True)
         # Print the stdout of the script
         print(result.stdout)
-    except FileNotFoundError:
-        print(f"Python executable not found. Make sure Python is installed and added to PATH.")
-        input()
     except subprocess.CalledProcessError as e:
         print(f"Error occurred while executing {script_path}.")
         print(f"Return Code: {e.returncode}")
