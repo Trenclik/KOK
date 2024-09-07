@@ -7,8 +7,8 @@ import stat
 import requests
 script_directory = os.path.dirname(os.path.abspath(__file__))
 os.chdir(script_directory)
-
-APP_VERSION = "v1.15.8"  # Replace this with your app's current version
+ver = open("version", "r")
+APP_VERSION = ver.read()  # Replace this with your app's current version
 GITHUB_REPO_URL = "https://api.github.com/repos/Trenclik/KOK/releases"
 HEADERS = {}
 
