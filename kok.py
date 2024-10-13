@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream:kok.py
 import tkinter as tk
 from tkinter import ttk
 from ttkthemes import ThemedStyle
@@ -5,6 +6,13 @@ import random
 import os
 
 okno = tk.Tk() #vytvoří kokno ig
+=======
+import tkinter
+import random
+import os
+
+okno = tkinter.Tk() #vytvoří kokno ig
+>>>>>>> Stashed changes:kok_v1.1.py
 okno.attributes('-fullscreen',True)
 okno.title("kok mole nečum")
 style = ThemedStyle(okno)
@@ -51,15 +59,23 @@ def klik():   #po kliknutí se změní fotka
     pamet[0] = majtin
     label.config(image = fotka)
 
+<<<<<<< Updated upstream:kok.py
 klikblb = ttk.Button(okno,
+=======
+tkinter.klikblb = Button(okno,
+>>>>>>> Stashed changes:kok_v1.1.py
                  text="kok, klikni",
                  command=klik)
-klikblb.pack()
+tkinter.klikblb.pack()
 
+<<<<<<< Updated upstream:kok.py
 klikblb = ttk.Button(okno,
+=======
+tkinter.klikblb = Button(okno,
+>>>>>>> Stashed changes:kok_v1.1.py
                  text="exit",
                  command=exit)
-klikblb.pack()
+tkinter.klikblb.pack()
 def exit(event):
     okno.quit()
 
